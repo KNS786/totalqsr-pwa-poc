@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import logo from './logo.svg';
+import './firebase';
 //import './App.css';
-
 function App() {
 
   const [location,setCurrentLocation] : any = useState();
@@ -12,7 +12,8 @@ function App() {
     if(locationStore.length > 0){
       console.log("locationStore ::: ", locationStore);
     }
-
+    //pushNotification();
+  
   },[locationStore])
 
   const getCurrentLocation = (event:any) =>{
