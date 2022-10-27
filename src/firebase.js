@@ -17,50 +17,36 @@ const firebaseConfig = {
   measurementId: "G-0YMTH62CG5"
 };
 
-const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
-const vapiKey:any = {vapiKey:'BNIsON_vtEnpFe8toAQewte8mjCLIInA59EXujvQnRHTACS8l5eYrLdIx9V1Tu1iRZdMDRmdtCLRWkIREhK6bSk'};
-getToken(messaging, vapiKey).then((token:string)=>{
-if(token){
-  console.log("FCM Token :: ",token);
+
+export function requestPermission() {
+  console.log('Requesting permission...');
+  return Notification.requestPermission().then((permission) => {
+    if (permission === 'granted') {
+      console.log('Notification permission granted.');
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const messaging = getMessaging(app);
+      const vapiKey:any = {vapiKey:'BNIsON_vtEnpFe8toAQewte8mjCLIInA59EXujvQnRHTACS8l5eYrLdIx9V1Tu1iRZdMDRmdtCLRWkIREhK6bSk'};
+     getToken(messaging, vapiKey).then((token:string)=>{
+      if(token){
+        console.log("FCM Token :: ",token);
+        return true;
+      }
+      else{
+        console.log("you don't have notification permission");
+      }
+      }).catch((err:any)=>{
+        console.log("err :: ", err);
+      })
+    }
+    else{
+      console.log("you don't have permission ");
+    }
+    return false;
+  })
 }
-else{
-  console.log("request permission required..");
-}
-}).catch((err:any)=>{
-  console.log("err :: ", err);
-})
 
-//const analytics = getAnalytics(firebase);
-
-// function requestPermission() {
-//   console.log('Requesting permission...');
-//   Notification.requestPermission().then((permission) => {
-//     if (permission === 'granted') {
-//       console.log('Notification permission granted.');
-//       // Initialize Firebase
-//       const app = initializeApp(firebaseConfig);
-//       const messaging = getMessaging(app);
-//       const vapiKey:any = {vapiKey:'BNIsON_vtEnpFe8toAQewte8mjCLIInA59EXujvQnRHTACS8l5eYrLdIx9V1Tu1iRZdMDRmdtCLRWkIREhK6bSk'};
-//      getToken(messaging, vapiKey).then((token:string)=>{
-//       if(token){
-//         console.log("FCM Token :: ",token);
-//       }
-//       else{
-//         console.log("request permission required..");
-//       }
-//       }).catch((err:any)=>{
-//         console.log("err :: ", err);
-//       })
-//     }
-//     else{
-//       console.log("you don't have permission ");
-//     }
-
-//   })
-// }
-
-// requestPermission();
+//requestPermission();
 
 //export default messaging;
 

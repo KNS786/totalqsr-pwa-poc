@@ -1,17 +1,21 @@
 import React,{useState,useEffect} from 'react';
 import logo from './logo.svg';
-import './firebase';
+import {requestPermission} from './firebase';
+import { getMessaging , getToken } from "firebase/messaging";
+
 //import './App.css';
 function App() {
 
   const [location,setCurrentLocation] : any = useState();
   const [buttonClicked,setButtonClicked] : any = useState(false);
   const [locationStore,setLocationStore] : any = useState([])
+  const [notificationPermission, setNotificationPermisson ]:any = useState(false);
 
   useEffect(()=>{
     if(locationStore.length > 0){
       console.log("locationStore ::: ", locationStore);
     }
+    //requestPermission();
     //pushNotification();
   
   },[locationStore])
@@ -29,6 +33,16 @@ function App() {
       }
   }
 
+  const allowPushNotification = (event:any) =>{
+    requestPermission().then((data)=>{
+      console.log("texmp data :: ", data);
+      if(data){
+        console.log("data :: ",data);
+        setNotificationPermisson(true);
+      }
+    })
+  }
+
 
   return (
     <div className="App">
@@ -43,6 +57,10 @@ function App() {
         :
         (<></>)
       }
+
+      <button className="notification" onClick = {allowPushNotification}>
+        Allow Push Notification
+      </button>
 
     </div>
   );
