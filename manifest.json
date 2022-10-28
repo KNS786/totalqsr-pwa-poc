@@ -24,7 +24,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/totalqsr-pwa-poc",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#ebebeb",
   "background_color": "#f7f7f7"
