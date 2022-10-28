@@ -10,7 +10,7 @@ if('serviceWorker' in navigator) {
     console.log("Service worker registation failed, error :",err);
   })
 }
-
+//data
 // Initialize the Firebase app in the service worker by passing the generated config
 const firebaseConfig = {
   apiKey: "AIzaSyDOooVxp3QF-4XtQIJw1Y6i-4Fp2gRokcc",
