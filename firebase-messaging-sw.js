@@ -4,7 +4,7 @@ importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compa
 
 
 if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('../firebase.js').then(function(registration){
+  navigator.serviceWorker.register('./firebase-sw.js').then(function(registration){
     console.log("Registation scuccessfull, scope is : ", registration.scope);
   }).catch(function(err){
     console.log("Service worker registation failed, error :",err);
