@@ -2,8 +2,17 @@
 importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js');
 
+
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('../firebase.js').then(function(registration){
+    console.log("Registation scuccessfull, scope is : ", registration.scope);
+  }).catch(function(err){
+    console.log("Service worker registation failed, error :",err);
+  })
+}
+
 // Initialize the Firebase app in the service worker by passing the generated config
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyDOooVxp3QF-4XtQIJw1Y6i-4Fp2gRokcc",
   authDomain: "totalqsr-pwa-poc.firebaseapp.com",
   projectId: "totalqsr-pwa-poc",
