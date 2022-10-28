@@ -25,8 +25,10 @@ export function requestPermission() {
       console.log('Notification permission granted.');
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
+      console.log("app initized ... ");
       const messaging = getMessaging(app);
-      const vapiKey:any = {vapiKey:'BNIsON_vtEnpFe8toAQewte8mjCLIInA59EXujvQnRHTACS8l5eYrLdIx9V1Tu1iRZdMDRmdtCLRWkIREhK6bSk'};
+      console.log("messaging passed");
+      const vapiKey = {vapiKey:'BNIsON_vtEnpFe8toAQewte8mjCLIInA59EXujvQnRHTACS8l5eYrLdIx9V1Tu1iRZdMDRmdtCLRWkIREhK6bSk'};
      getToken(messaging, vapiKey).then((token:string)=>{
       if(token){
         console.log("FCM Token :: ",token);

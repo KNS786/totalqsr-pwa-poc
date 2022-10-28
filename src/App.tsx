@@ -34,13 +34,7 @@ function App() {
   }
 
   const allowPushNotification = (event:any) =>{
-    requestPermission().then((data)=>{
-      console.log("texmp data :: ", data);
-      if(data){
-        console.log("data :: ",data);
-        setNotificationPermisson(true);
-      }
-    })
+    requestPermission();
   }
 
 
